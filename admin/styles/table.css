@@ -1,0 +1,92 @@
+.table {
+  border-radius: 1rem;
+  overflow: hidden;
+  border: .1rem solid #000;
+}
+
+.table .table__row {
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+}
+
+.table .table__row:nth-child(odd) {
+  background-color: #eee;
+}
+
+.table .table__row.table__row--header {
+  background-color: #ddd;
+  border-bottom: .1rem solid #000;
+}
+
+.table .table__row.table__row--created {
+  color: #aaa
+}
+
+.table .table__row.table__row--removed {
+  background-color: rgb(251, 217, 217);
+  color: #aaa
+}
+
+.table .table__column {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: center;
+  flex-direction: column;
+  gap: .1rem;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.table .table__column.table__column--large {
+  flex: 2;
+}
+
+.table__action {
+  cursor: pointer;
+}
+
+.table__action--delete {
+  color: #f00;
+}
+
+.table__action--accessrights {
+  color: #8299e9;
+}
+
+.userlist .userlist__footer {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.buttonrow {
+  margin-top: .5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.button {
+  padding: .5rem 1rem;
+  border-radius: .5rem;
+  border: #444;
+  background-color: #ddd;
+  border: .1rem solid #000;
+  cursor: pointer;
+}
+
+.button.button--red {
+  background-color: #ee4a4a;
+}
+
+.button.button--green {
+  background-color: #53d87d;
+}
+
+.button.button--blue {
+  background-color: #6693f3;
+}
