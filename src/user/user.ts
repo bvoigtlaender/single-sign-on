@@ -44,16 +44,24 @@ user.post('/login', async (req, res) => {
 })
 
 user.put('/:id', async (req, res) => {
-  const id = Number(req.params.id)
-  const data = req.body as User;
-  const result = await prisma.user.update({ where: { id }, data })
-  res.json(result);
+  try {
+    const id = Number(req.params.id)
+    const data = req.body as User;
+    const result = await prisma.user.update({ where: { id }, data })
+    res.json(result);
+  } catch (error) {
+    res.status(500).json(error)
+  }
 })
 
 user.delete('/:id', async (req, res) => {
-  const id = Number(req.params.id)
-  const result = await prisma.user.delete({ where: { id } })
-  res.json(result)
+  try {
+    const id = Number(req.params.id)
+    const result = await prisma.user.delete({ where: { id } })
+    res.json(result)
+  } catch (error) {
+    res.status(500).json(error)
+  }
 })
 
 export default user;
