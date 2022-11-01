@@ -5,8 +5,12 @@ const user = express.Router();
 const prisma = new PrismaClient();
 
 user.get('/', async (req, res) => {
-  const result = await prisma.user.findMany();
-  res.json(result)
+  try {
+    const result = await prisma.user.findMany();
+    res.json(result)
+  } catch (error) {
+    res.status(500).json(error)
+  }
 })
 
 user.get('/:id', async (req, res) => {
