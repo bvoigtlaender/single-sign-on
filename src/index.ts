@@ -1,5 +1,6 @@
 import express from "express";
-import user from './user/user';
+import rights from './rights/rights';
+import users from './users/users';
 
 const service = express();
 
@@ -11,7 +12,8 @@ service.use((req, res, next) => {
   next()
 })
 
-service.use('/v1/user', user);
+service.use('/v1/users', users);
+service.use('/v1/rights', rights);
 
 const server = service.listen(4000, () => {
   console.log(`🚀 Server ready at: http://localhost:4000`)

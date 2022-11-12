@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 
-export default function AccessRights({ id }) {
+export default function UserRights({ id }) {
   const [user, setUser] = useState()
   const [loading, setLoading] = useState(false)
   useEffect(() => {
-    console.log(`id changed to ${id}`)
     if (typeof id === 'number') {
       setLoading(false)
       fetch(`http://localhost:4000/v1/user/${id}`)

@@ -1,0 +1,23 @@
+.switch {
+  border: .1rem solid #000;
+  border-radius: 1rem;
+  display: flex;
+  gap: 1rem;
+  flex-direction: row;
+  width: fit-content;
+  margin: 0 auto;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.switch .switch__option {
+  text-align: center;
+  padding: .5rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.switch .switch__option.switch__option--selected {
+  background-color: #ddd;
+  border-radius: 1rem;
+}

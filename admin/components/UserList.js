@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import UserListItem from './UserListItem';
-import '../styles/table.css'
 import '../styles/form.css'
 import Modal from './Modal';
-import AccessRights from './AccessRights';
+import AccessRights from './UserRights';
+import Table from './Table/Table';
 
 export default function UserList() {
   const [users, setUsers] = useState([])
@@ -14,10 +14,10 @@ export default function UserList() {
     reloadUsers()
   }, [])
 
-  function reloadUsers() {
-    fetch('http://localhost:4000/v1/user')
-      .then(response => response.json())
-      .then(users => setUsers(users.sort((userA, userB) => userA.id - userB.id)))
+  async function reloadUsers() {
+    const response = await fetch('http://localhost:4000/v1/users')
+    const users = await response.json()
+    setUsers(users.sort((userA, userB) => userA.id - userB.id))
   }
 
   useEffect(() => {
@@ -69,18 +69,19 @@ export default function UserList() {
     }, 1000)
   }
 
+  const headers = [
+    { name: 'Id' },
+    { name: 'Name' },
+    { name: 'Email', large: true },
+    { name: 'Password' },
+    { name: 'Actions' }
+  ]
+
   return (
     <div className="userlist">
-      <div className="table">
-        <div className='table__row table__row--header'>
-          <p className='table__column'>Id</p>
-          <p className='table__column'>Name</p>
-          <p className='table__column  table__column--large'>Email</p>
-          <p className='table__column'>Password</p>
-          <p className='table__column'>Actions</p>
-        </div>
+      <Table headers={headers} >
         {users.map(user => <UserListItem key={user.id} user={user} onClickDelete={onClickDelete} onClickAccessRights={setShowAccessRights} />)}
-      </div>
+      </Table>
       <div className="userlist__footer"><button className='button button--green' onClick={openModal}>🐣 New user</button></div>
       <Modal id="accessrights" isOpen={showAccessRights !== false} onClose={() => setShowAccessRights(false)} onSubmit={() => { }} showClose={true} showSubmit={true} >
         <AccessRights id={showAccessRights} />
