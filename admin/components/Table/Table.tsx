@@ -1,6 +1,17 @@
+import React from 'react'
 import './table.css'
 
-export default function Table({ headers, children }) {
+export type Header = {
+  name: string,
+  large?: boolean
+}
+
+type Props = {
+  headers: Header[],
+  children: React.ReactNode
+}
+
+export default function Table({ headers, children }: Props) {
   return (
     <div className="table">
       <div className='table__row table__row--header'>

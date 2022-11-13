@@ -1,5 +1,5 @@
 import express from 'express'
-import { PrismaClient, Right } from '@prisma/client'
+import { PrismaClient, Right } from '../../generated/client'
 
 const rights = express.Router()
 const client = new PrismaClient();

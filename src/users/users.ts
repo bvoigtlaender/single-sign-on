@@ -1,4 +1,4 @@
-import { PrismaClient, User } from '@prisma/client';
+import { PrismaClient, User } from '../../generated/client';
 import express from 'express';
 
 const users = express.Router();
@@ -29,6 +29,7 @@ users.post('/', async (req, res) => {
     const result = await prisma.user.create({ data: { name, email, password } });
     res.json(result);
   } catch (error) {
+    console.error(error)
     res.status(500).json(error)
   }
 })

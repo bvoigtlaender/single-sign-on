@@ -4,8 +4,10 @@
     "outDir": "dist",
     "strict": true,
     "lib": [
+      "dom",
       "esnext"
     ],
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "jsx": "react"
   }
 }

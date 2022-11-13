@@ -1,8 +1,13 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { User } from '../types/User';
 
-export default function UserRights({ id }) {
-  const [user, setUser] = useState()
-  const [loading, setLoading] = useState(false)
+type Props = {
+  id: number | boolean
+}
+
+export default function UserRights({ id }: Props) {
+  const [user, setUser] = useState<User>()
+  const [loading, setLoading] = useState<boolean>(false)
   useEffect(() => {
     if (typeof id === 'number') {
       setLoading(false)
@@ -17,11 +22,11 @@ export default function UserRights({ id }) {
     <h1>Access rights for {user.name}:</h1>
     <table>
       <tbody>
-        {user.accessRights.map(accessRight => {
+        {user.accessRights.map(accessRight =>
           <tr>
             {accessRight}
           </tr>
-        })}
+        )}
       </tbody>
     </table>
   </div>

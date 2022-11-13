@@ -1,9 +1,10 @@
+import React from 'react'
 import './styles/reset.css'
 import './styles/app.css'
-import UserList from "./components/UserList";
+import UserTable from "./components/UserTable";
+import RightTable from './components/RightTable';
 import Switch from './components/Switch/Switch';
 import { useState } from 'react';
-import RightList from './components/RightList';
 
 export function App() {
   const [tab, setTab] = useState(2);
@@ -12,17 +13,17 @@ export function App() {
 
   switch (tab) {
     case 0:
-      route = <UserList />
+      route = <UserTable />
       break
     case 1:
-      route = <RightList />
+      route = <UserTable />
       break
     default:
       route = <h1>404</h1>
   }
 
   return <>
-    <Switch options={['Users', 'Accessrights', 'Roles']} selected={tab} setSelected={setTab} />
+    <Switch options={['Users', 'Accessrights', 'Roles']} selected={tab} onSelect={setTab} />
     {route}
     <p className='copyright'>made by bjarne</p>
   </>;
